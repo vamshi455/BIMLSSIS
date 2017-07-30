@@ -1,0 +1,8 @@
+<#@ template tier="0" #>
+	
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Connections>
+		<OleDbConnection Name="Source" ConnectionString="Data Source=.;Initial Catalog=SRC_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;"/>
+		<OleDbConnection Name="Dest" ConnectionString="Data Source=.;Initial Catalog=DEST_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;"/>
+	</Connections>
+</Biml>

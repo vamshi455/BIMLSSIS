@@ -1,0 +1,77 @@
+<#@ template tier="1" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+
+<#+
+	List<string> GetTables() {
+		List<string> tables = new List<string>();
+
+			SqlConnection cn = new SqlConnection("Data Source=.;Initial Catalog=SRC_DB;Integrated Security=SSPI;");
+			SqlDataAdapter da = new SqlDataAdapter();
+			DataSet ds = new DataSet();
+			DataTable dt = new DataTable();
+
+			var cmd = new SqlCommand("SELECT name FROM sys.tables ORDER BY name");
+			cmd.Connection = cn;
+
+			try {
+			da.SelectCommand = cmd;
+
+			ds.Tables.Add(new DataTable("Results"));
+
+			if(cn.State != ConnectionState.Open) {
+			cn.Open();
+			}
+
+			ds.Tables[0].BeginLoadData();
+			da.Fill(ds,"Results");
+			ds.Tables[0].EndLoadData();
+
+			dt = ds.Tables[0];
+
+			if (cn.State != ConnectionState.Closed) {
+			cn.Close();
+			}
+			}
+
+			catch(Exception ex) {
+			throw ex;
+			}
+
+			finally {
+			if (cn.State != ConnectionState.Closed) {
+			cn.Close();
+			}
+			cn.Dispose();
+			}
+
+			foreach (DataRow row in dt.Rows) {
+			tables.Add(row["name"].ToString());
+			}
+
+			return tables;
+			}
+			#>
+			<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+		<Packages>
+		<Package Name="DynamicDataLoad" ConstraintMode="Linear">
+			<Tasks>
+				<# foreach(var table in GetTables()) { #>
+				<ExecuteSQL Name="TRUNCATE dest <#=table#>" ConnectionName="Dest">
+					<DirectInput>TRUNCATE TABLE <#=table#></DirectInput>
+				</ExecuteSQL>
+				<Dataflow Name ="Load <#=table#>" >
+					<Transformations>
+						<OleDbSource Name="Source Table" ConnectionName="Source">
+							<ExternalTableInput Table="<#=table#>"></ExternalTableInput>
+						</OleDbSource>
+						<OleDbDestination Name="Dest Table" ConnectionName="Dest">
+							<ExternalTableOutput Table="<#=table#>"></ExternalTableOutput>
+						</OleDbDestination>
+					</Transformations>
+				</Dataflow>
+				<# } #>
+			</Tasks>
+		</Package>
+	</Packages>
+</Biml>

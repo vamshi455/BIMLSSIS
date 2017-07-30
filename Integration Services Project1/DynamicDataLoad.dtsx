@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="07/30/2017 02:14:21" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="DESKTOP-AJIADAL" DTS:CreatorName="vamshi-pc" DTS:DTSID="{D85482F3-23C2-445E-9E16-8CE5361E75D8}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="DynamicDataLoad" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{F31808A8-6A1F-47B6-917A-05123F6E396C}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager DTS:CreationName="OLEDB" DTS:DTSID="{E82DCBB1-6E99-41D4-A8D8-0F3C66615D55}" DTS:ObjectName="Source" DTS:refId="Package.ConnectionManagers[Source]">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager DTS:ConnectionString="Data Source=.;Initial Catalog=SRC_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;">
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager DTS:CreationName="OLEDB" DTS:DTSID="{424D88E1-A602-41AE-8BBB-3634D27FBD8B}" DTS:ObjectName="Dest" DTS:refId="Package.ConnectionManagers[Dest]">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager DTS:ConnectionString="Data Source=.;Initial Catalog=DEST_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;">
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:DTSID="{BF382080-B5DE-4634-91FA-E73DAEF5C463}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="TRUNCATE dest TABLE_1" DTS:refId="Package\TRUNCATE dest TABLE_1" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Dest" SQLTask:SqlStatementSource="TRUNCATE TABLE TABLE_1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="Microsoft.Pipeline" DTS:DTSID="{703E346A-97E4-4A25-B33E-E04083AECFA6}" DTS:ExecutableType="Microsoft.Pipeline" DTS:LocaleID="-1" DTS:ObjectName="Load TABLE_1" DTS:refId="Package\Load TABLE_1" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="Microsoft.OLEDBSource" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="Source Table" refId="Package\Load TABLE_1\Source Table" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{E82DCBB1-6E99-41D4-A8D8-0F3C66615D55}:external" connectionManagerRefId="Package.ConnectionManagers[Source]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\Load TABLE_1\Source Table.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\Load TABLE_1\Source Table.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="COL1" refId="Package\Load TABLE_1\Source Table.Outputs[Output].ExternalColumns[COL1]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="COL2" refId="Package\Load TABLE_1\Source Table.Outputs[Output].ExternalColumns[COL2]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\Load TABLE_1\Source Table.Outputs[Output].ExternalColumns[COL1]" lineageId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL1]" name="COL1" refId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL1]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\Load TABLE_1\Source Table.Outputs[Output].ExternalColumns[COL2]" length="100" lineageId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL2]" name="COL2" refId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL2]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\Load TABLE_1\Source Table.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[COL1]" name="COL1" refId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[COL1]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[COL2]" name="COL2" refId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[COL2]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\Load TABLE_1\Source Table.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">TABLE_1</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">0</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="Microsoft.OLEDBDestination" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="Dest Table" refId="Package\Load TABLE_1\Dest Table" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{424D88E1-A602-41AE-8BBB-3634D27FBD8B}:external" connectionManagerRefId="Package.ConnectionManagers[Dest]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\Load TABLE_1\Dest Table.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="Source Table_Output_Dest Table" refId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="COL1" refId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL1]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="COL2" refId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL2]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="COL1" externalMetadataColumnId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL1]" lineageId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL1]" refId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].Columns[COL1]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="COL2" externalMetadataColumnId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL2]" lineageId="Package\Load TABLE_1\Source Table.Outputs[Output].Columns[COL2]" refId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table].Columns[COL2]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\Load TABLE_1\Dest Table.Outputs[Error]" synchronousInputId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_1\Dest Table.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\Load TABLE_1\Dest Table.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_1\Dest Table.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\Load TABLE_1\Dest Table.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">TABLE_1</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\Load TABLE_1\Dest Table.Inputs[Source Table_Output_Dest Table]" name="Source Table_Output_Dest Table" refId="Package\Load TABLE_1.Paths[Source Table_Output_Dest Table]" startId="Package\Load TABLE_1\Source Table.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:DTSID="{B2DE2894-27D7-4D2C-BA9C-B19AFFE23373}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="TRUNCATE dest TABLE_2" DTS:refId="Package\TRUNCATE dest TABLE_2" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Dest" SQLTask:SqlStatementSource="TRUNCATE TABLE TABLE_2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="Microsoft.Pipeline" DTS:DTSID="{A01F8D3A-A381-430E-8875-75E7B5C889F4}" DTS:ExecutableType="Microsoft.Pipeline" DTS:LocaleID="-1" DTS:ObjectName="Load TABLE_2" DTS:refId="Package\Load TABLE_2" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="Microsoft.OLEDBSource" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="Source Table" refId="Package\Load TABLE_2\Source Table" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{E82DCBB1-6E99-41D4-A8D8-0F3C66615D55}:external" connectionManagerRefId="Package.ConnectionManagers[Source]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\Load TABLE_2\Source Table.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\Load TABLE_2\Source Table.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="COL1" refId="Package\Load TABLE_2\Source Table.Outputs[Output].ExternalColumns[COL1]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="COL2" refId="Package\Load TABLE_2\Source Table.Outputs[Output].ExternalColumns[COL2]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\Load TABLE_2\Source Table.Outputs[Output].ExternalColumns[COL1]" lineageId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL1]" name="COL1" refId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL1]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\Load TABLE_2\Source Table.Outputs[Output].ExternalColumns[COL2]" length="100" lineageId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL2]" name="COL2" refId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL2]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\Load TABLE_2\Source Table.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[COL1]" name="COL1" refId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[COL1]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[COL2]" name="COL2" refId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[COL2]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\Load TABLE_2\Source Table.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">TABLE_2</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">0</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="Microsoft.OLEDBDestination" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="Dest Table" refId="Package\Load TABLE_2\Dest Table" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{424D88E1-A602-41AE-8BBB-3634D27FBD8B}:external" connectionManagerRefId="Package.ConnectionManagers[Dest]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\Load TABLE_2\Dest Table.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="Source Table_Output_Dest Table" refId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="COL1" refId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL1]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="COL2" refId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL2]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="COL1" externalMetadataColumnId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL1]" lineageId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL1]" refId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].Columns[COL1]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="COL2" externalMetadataColumnId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].ExternalColumns[COL2]" lineageId="Package\Load TABLE_2\Source Table.Outputs[Output].Columns[COL2]" refId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table].Columns[COL2]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\Load TABLE_2\Dest Table.Outputs[Error]" synchronousInputId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_2\Dest Table.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\Load TABLE_2\Dest Table.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\Load TABLE_2\Dest Table.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\Load TABLE_2\Dest Table.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">TABLE_2</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\Load TABLE_2\Dest Table.Inputs[Source Table_Output_Dest Table]" name="Source Table_Output_Dest Table" refId="Package\Load TABLE_2.Paths[Source Table_Output_Dest Table]" startId="Package\Load TABLE_2\Source Table.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{448BFD31-2B83-4032-99C3-B3F3CC304CC8}" DTS:From="Package\TRUNCATE dest TABLE_1" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_TRUNCATE dest TABLE_1_To_Load TABLE_1" DTS:refId="Package.PrecedenceConstraints[Constraint_TRUNCATE dest TABLE_1_To_Load TABLE_1]" DTS:To="Package\Load TABLE_1">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F2E19CE6-55F7-44C5-8C3C-6F72A152F457}" DTS:From="Package\Load TABLE_1" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_Load TABLE_1_To_TRUNCATE dest TABLE_2" DTS:refId="Package.PrecedenceConstraints[Constraint_Load TABLE_1_To_TRUNCATE dest TABLE_2]" DTS:To="Package\TRUNCATE dest TABLE_2">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B9051A35-06AE-4261-A4F7-914F3084E585}" DTS:From="Package\TRUNCATE dest TABLE_2" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_TRUNCATE dest TABLE_2_To_Load TABLE_2" DTS:refId="Package.PrecedenceConstraints[Constraint_TRUNCATE dest TABLE_2_To_Load TABLE_2]" DTS:To="Package\Load TABLE_2">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
+</DTS:Executable>

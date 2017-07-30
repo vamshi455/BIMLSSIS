@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="07/30/2017 01:18:45" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="DESKTOP-AJIADAL" DTS:CreatorName="vamshi-pc" DTS:DTSID="{1856D299-6365-4F74-A827-7CE856EF2C2B}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="GeneratedPackage2" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6BCD90B3-1B40-4E20-A1DF-3DA94D044E4D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
+</DTS:Executable>

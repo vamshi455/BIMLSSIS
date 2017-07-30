@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/30/2017 1:18:45 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-AJIADAL"
+  DTS:CreatorName="vamshi-pc"
+  DTS:DTSID="{BCA5554A-A2E8-452E-86D0-3509925C737E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ExecuteAllPackages"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{5B809D38-CF8F-4ECD-A84A-0FEA92CA10B4}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[_ExecuteAllPackages.EXECUTE GeneratedPackage0]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F589BA46-7E66-4CFC-9154-FE2FE0439F8A}"
+      DTS:ObjectName="_ExecuteAllPackages.EXECUTE GeneratedPackage0">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\vamshi-pc\documents\visual studio 2013\projects\Integration Services Project1\Integration Services Project1\GeneratedPackage0.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[_ExecuteAllPackages.EXECUTE GeneratedPackage1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B7F72E7F-E8D3-4847-94D6-E5B25B963B9E}"
+      DTS:ObjectName="_ExecuteAllPackages.EXECUTE GeneratedPackage1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\vamshi-pc\documents\visual studio 2013\projects\Integration Services Project1\Integration Services Project1\GeneratedPackage1.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[_ExecuteAllPackages.EXECUTE GeneratedPackage2]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0F1C6FF1-969B-4BEB-8B80-0BD13D5B7204}"
+      DTS:ObjectName="_ExecuteAllPackages.EXECUTE GeneratedPackage2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\vamshi-pc\documents\visual studio 2013\projects\Integration Services Project1\Integration Services Project1\GeneratedPackage2.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[_ExecuteAllPackages.EXECUTE GeneratedPackage3]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{FAB8E57F-55D7-472D-98BE-2479EE252AF8}"
+      DTS:ObjectName="_ExecuteAllPackages.EXECUTE GeneratedPackage3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\vamshi-pc\documents\visual studio 2013\projects\Integration Services Project1\Integration Services Project1\GeneratedPackage3.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[_ExecuteAllPackages.EXECUTE GeneratedPackage4]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{58BCBDD3-EAA6-481D-95E1-9895BEF800E0}"
+      DTS:ObjectName="_ExecuteAllPackages.EXECUTE GeneratedPackage4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\vamshi-pc\documents\visual studio 2013\projects\Integration Services Project1\Integration Services Project1\GeneratedPackage4.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EXECUTE GeneratedPackage0"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{AF01758D-A9AE-447F-8C3D-91824F5D0CB1}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXECUTE GeneratedPackage0"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <Connection>{F589BA46-7E66-4CFC-9154-FE2FE0439F8A}</Connection>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXECUTE GeneratedPackage1"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{6A8EA909-7AA2-44ED-8522-03FCBD64C19B}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXECUTE GeneratedPackage1"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <Connection>{B7F72E7F-E8D3-4847-94D6-E5B25B963B9E}</Connection>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXECUTE GeneratedPackage2"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{433D43F1-EED8-4C95-9655-003895539FF9}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXECUTE GeneratedPackage2"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <Connection>{0F1C6FF1-969B-4BEB-8B80-0BD13D5B7204}</Connection>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXECUTE GeneratedPackage3"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{967380EE-901F-4FDE-ACF5-63CD23BC90F8}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXECUTE GeneratedPackage3"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <Connection>{FAB8E57F-55D7-472D-98BE-2479EE252AF8}</Connection>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXECUTE GeneratedPackage4"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{E8A82181-5921-4C16-A72C-425F37D92B3E}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXECUTE GeneratedPackage4"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <Connection>{58BCBDD3-EAA6-481D-95E1-9895BEF800E0}</Connection>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EXECUTE GeneratedPackage0_To_EXECUTE GeneratedPackage1]"
+      DTS:CreationName=""
+      DTS:DTSID="{020FEB47-468D-41C2-A8F4-8737CAAAD7D4}"
+      DTS:From="Package\EXECUTE GeneratedPackage0"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EXECUTE GeneratedPackage0_To_EXECUTE GeneratedPackage1"
+      DTS:To="Package\EXECUTE GeneratedPackage1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EXECUTE GeneratedPackage1_To_EXECUTE GeneratedPackage2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A23CA5B8-1ED1-4C18-8860-287351B6A55D}"
+      DTS:From="Package\EXECUTE GeneratedPackage1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EXECUTE GeneratedPackage1_To_EXECUTE GeneratedPackage2"
+      DTS:To="Package\EXECUTE GeneratedPackage2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EXECUTE GeneratedPackage2_To_EXECUTE GeneratedPackage3]"
+      DTS:CreationName=""
+      DTS:DTSID="{79CF0BB7-5C34-41DE-91B1-CDF01824B574}"
+      DTS:From="Package\EXECUTE GeneratedPackage2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EXECUTE GeneratedPackage2_To_EXECUTE GeneratedPackage3"
+      DTS:To="Package\EXECUTE GeneratedPackage3" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EXECUTE GeneratedPackage3_To_EXECUTE GeneratedPackage4]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F8DDB04-0E59-44DC-8237-4362BE946CC5}"
+      DTS:From="Package\EXECUTE GeneratedPackage3"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EXECUTE GeneratedPackage3_To_EXECUTE GeneratedPackage4"
+      DTS:To="Package\EXECUTE GeneratedPackage4" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

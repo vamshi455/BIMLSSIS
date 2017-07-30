@@ -1,0 +1,7 @@
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Packages>
+		<# for(int i=0; i<5; i++) { #>
+			<Package Name="GeneratedPackage<#=i#>" ConstraintMode="Linear"/>
+		<# } #>
+	</Packages>
+</Biml>

@@ -1,0 +1,28 @@
+<!-- BIML script created by Koen Verbeeck -->
+<!-- This BIML code will generate a simple SSIS package with two Execute SQL Tasks -->
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Connections>
+		<OleDbConnection Name="Source" ConnectionString="Data Source=.;Initial Catalog=SRC_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;"/>
+		<OleDbConnection Name="Dest" ConnectionString="Data Source=.;Initial Catalog=DEST_DB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;"/>
+	</Connections>
+	<Packages>
+		<Package Name="BASICDATALOAD" ConstraintMode="Linear">
+			<Tasks>
+				<ExecuteSQL Name="TRUNCATE dest table_1" ConnectionName="Dest">
+					<DirectInput>TRUNCATE TABLE TABLE_1</DirectInput>
+				</ExecuteSQL>
+				<Dataflow Name ="Load Table_1">
+					<Transformations>
+						<OleDbSource Name="Source Table" ConnectionName="Source">
+							<ExternalTableInput Table="Table_1"></ExternalTableInput>
+						</OleDbSource>
+						<OleDbDestination Name="Dest Table" ConnectionName="Dest">
+							<ExternalTableOutput Table="Table_1"></ExternalTableOutput>
+						</OleDbDestination>
+					</Transformations>
+				</Dataflow>
+			</Tasks>
+		</Package>
+	</Packages>
+</Biml>
